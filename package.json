@@ -15,6 +15,7 @@
   "author": "d1m0s23",
   "license": "ISC",
   "devDependencies": {
+    "node-fetch": "^2.6.1",
     "nodemon": "^2.0.12"
   }
 }
