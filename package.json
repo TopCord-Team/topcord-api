@@ -7,8 +7,12 @@
     "dev": "nodemon ./src/index.js",
     "start": "node ./src/index.js"
   },
+  "contributors": [
+    "vitaliyirtlach",
+    "evgen1y"
+  ],
   "keywords": [],
-  "author": "",
+  "author": "d1m0s23",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^2.0.12"
