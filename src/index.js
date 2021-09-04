@@ -2,19 +2,19 @@ const axios = require("axios")
 const fetch = require("node-fetch")
 
 class TopCord {
-    #token = ""
+    #tokens = {}
     #request = null
     #baseURL = 'https://api-bots.topcord.ru'
 
-    constructor(token) {
-      this.#token = token
+    constructor({ apiToken, botToken }) {
+      this.#tokens = { apiToken, botToken }
 
       this.#request = axios.create({
           baseURL: this.#baseURL,
           withCredentials: true,
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer: ${token}`
+            'Authorization': `Bearer: ${apiToken}`
           }
       })
     }
@@ -200,6 +200,20 @@ class TopCord {
             return data
         } catch({ response }) {
             return response.data
+        }
+    }
+
+
+    async setBotGuilds(id, guilds) {
+        try {
+            const { data } = await this.#request.put(`/bots/${id}/guilds`, { 
+                token: this.#tokens.botToken,
+                guilds
+            })
+            return data
+        } catch(e) {
+            console.log(e)
+            return await e.response.data
         }
     }
 }

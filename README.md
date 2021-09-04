@@ -7,9 +7,11 @@
 ```js
 const TopCord = require("@topcord/api")
 
-const TOKEN = ""
 async function main() {
-    const api = new TopCord(TOKEN)
+    const api = new TopCord({
+        botToken: "",
+        apiToken: ""
+    })
     const me = await api.me() // Get my current profile
     console.log(me)
 }
@@ -18,7 +20,7 @@ async function main() {
 ## Getting started
 ```js
 const TopCord = required("@topcord/api")
-const api = new TopCord(token) // create instance
+const api = new TopCord({ botToken: "", apiToken: "" }) // create instance
 ```
 ## Methods
 
@@ -66,3 +68,5 @@ __instance__.getBotsByQuery(__query__) - get list of bots by query.
 __instance__.getAvailableTags() - list of available tags in monitoring with bots count.
 
 __instance__.getBotsByTag(__tag__) - get bots by tag.
+
+__instance__.setBotGuilds(__id__, __guilds__) - set bot guilds count.
